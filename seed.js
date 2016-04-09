@@ -3,13 +3,13 @@ var db = require("./models");
 
 var restaurantList =[];
 restaurantList.push({
-  name: 'Elephant Sushi',
-  address: '705 Geary St',
+  name: 'Restaurant A',
+  address: '777 Geary St',
   phoneNum: '415-555-1234',
 });
 restaurantList.push({
   name: 'Restaurant B',
-  address: '355 Bush St',
+  address: '333 Bush St',
   phoneNum: '415-555-5555',
 });
 restaurantList.push({

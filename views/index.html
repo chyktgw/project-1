@@ -6,28 +6,45 @@
 
     <title>Food App</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
+     <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <!-- VENDOR SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
-    <!-- VENDOR SCRIPTS -->
-    <script src="vendor/jQuery/dist/jquery.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendor/handlebars/handlebars.min.js"></script>
+</head>
 
-    <!-- APPLICATION SCRIPTS -->
-    <script src="scripts/app.js"></script>
-  </head>
+  <!-- APPLICATION SCRIPTS -->
+  <script src="scripts/app.js"></script>
+
   <body>
     <div class="foods">
       <div class="container">
         <h1>Food App</h1>
+        <h2>Review your favorite restaurants</h2>
       </div>
     </div>
+    <!-- Split button -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-info">Search</button>
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>Restaurant A</a></li>
+        <li>Restaurant B</a></li>
+        <li>Restaurant C</a></li>
+        <li>Restaurant D</a></li>
+      </ul>
+    </div>
+
     <!-- List of Restaurants -->
-<div id='restraunts'>
+<div id='restaurants'>
   <script id='restaurant-template' type='text/x-handlebars-template'>
-    <!-- one album -->
+
     <div class="row resturant" data-restraunt-id="{{_id}}">
 
       <div class="col-md-10 col-md-offset-1">
@@ -35,7 +52,7 @@
           <div class="panel-body">
 
 
-          <!-- begin album internal row -->
+          <!-- lists of restaurants -->
             <div class='row'>
               <div class="col-md-3 col-xs-12 thumbnail image">
                 <img src="images/food.img" alt="food">
@@ -45,20 +62,19 @@
                 <ul class="restaurant">
                   <li class="restaurant info">
                     <h4 class='inline-header'>Restraunt Name:</h4>
-                    <span class='album-name'>{{name}}</span>
+                    <span class='restaurant-name'>{{name}}</span>
                   </li>
 
                   <li class="restaurant info">
                     <h4 class='inline-header'>Address:</h4>
-                    <span class='artist-name'>{{address}}</span>
+                    <span class='restaurant-address'>{{address}}</span>
                   </li>
 
                   <li class="restaurant info">
                     <h4 class='inline-header'>Phone Number:</h4>
-                    <span class='album-releaseDate'>{{phoneNum}}</span>
+                    <span class='restaurant-phone'>{{phoneNum}}</span>
                   </li>
-
                 </ul>
-              </div>
-
-            </div>
+                </script>
+</body>
+</html>

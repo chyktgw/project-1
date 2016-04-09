@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
   });
 
-    $('#restaurants').on('submit', function(e) {
+    $('#restaurant-template').on('submit', function(e) {
       e.preventDefault();
       var formData = $(this).serialize();
       console.log('formData', formData);

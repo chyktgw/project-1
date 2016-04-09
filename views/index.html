@@ -7,39 +7,44 @@
     <title>Food App</title>
 
      <!-- STYLESHEETS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/styles.css">
-  <!-- VENDOR SCRIPTS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+     <!-- STYLESHEETS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/styles/styles.css">
 
-</head>
+     <!-- VENDOR SCRIPTS -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+
 
   <!-- APPLICATION SCRIPTS -->
   <script src="scripts/app.js"></script>
-
+</head>
   <body>
-    <div class="foods">
-      <div class="container">
+    <div class="jumbotron">
         <h1>Food App</h1>
-        <h2>Review your favorite restaurants</h2>
+        <p>Review your favorite restaurants<p>
       </div>
-    </div>
-    <!-- Split button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-info">Search</button>
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>Restaurant A</a></li>
-        <li>Restaurant B</a></li>
-        <li>Restaurant C</a></li>
-        <li>Restaurant D</a></li>
-      </ul>
-    </div>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+      <!-- Single button -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Restaurant Lists <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+              <li><a href="#">Restaurant A</a></li>
+              <li><a href="#">Restaurant B</a></li>
+              <li><a href="#">Restaurant C</a></li>
+              <li><a href="#">Restaurant D</a></li>
+              <li><a href="#">Restaurant E</a></li>
+            </ul>
+          </div>
+</div>
+</div>
+</div>
 
     <!-- List of Restaurants -->
 <div id='restaurants'>

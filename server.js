@@ -16,7 +16,6 @@ var controllers = require('./controllers');
  * ROUTES *
  **********/
 
-
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });

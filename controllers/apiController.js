@@ -4,7 +4,7 @@ function index(req, res) {
     documentation_url: "https://github.com/chyktgw/project-1",
     base_url: "WIP",
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes available endpoints"}
+      {method: "GET", path: "/api/restaurant", description: "List of restaurants"}
     ]
   });
 }

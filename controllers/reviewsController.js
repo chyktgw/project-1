@@ -23,11 +23,9 @@ function create(req, res) {
 function destroy(req, res) {
   db.Restaurant.findById(req.params.restaurantId, function(err, foundRestaurant) {
     console.log(foundRestaurant);
-    // we've got the album, now find the song within it
     var correctReview = foundRestaurant.reviews.id(req.params.reviewId);
     if (correctReview) {
       correctReview.remove();
-      // resave the album now that the song is gone
       foundRestaurant.save(function(err, saved) {
         console.log('REMOVED ', correctReview.name, 'FROM ', saved.reviews);
         res.json(correctReview);

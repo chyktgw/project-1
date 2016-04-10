@@ -46,39 +46,60 @@
 </div>
 </div>
 
-    <!-- List of Restaurants -->
-<div id='restaurants'>
-  <script id='restaurant-template' type='text/x-handlebars-template'>
 
-    <div class="row resturant" data-restraunt-id="{{_id}}">
-
-          <!-- lists of restaurants -->
-            <div class='row'>
-              <div class="col-md-3 col-xs-12 thumbnail image">
-                <img src="images/food.img" alt="food">
-              </div>
-
-              <div class="col-md-9 col-xs-12">
-                <ul class="restaurant">
-                  <li class="restaurant info">
-                    <h3 class='inline-header'>Restraunt Name:</h3>
-                    <span class='restaurant-name'>{{name}}</span>
-                  </li>
-
-                  <li class="restaurant info">
-                    <h3 class='inline-header'>Address:</h3>
-                    <span class='restaurant-address'>{{address}}</span>
-                  </li>
-
-                  <li class="restaurant info">
-                    <h3 class='inline-header'>Phone Number:</h3>
-                    <span class='restaurant-phone'>{{phoneNum}}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+<section class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>Restaurants</h2>
     </div>
-</div>
-                </script>
+  </div>
+  <!-- albums! -->
+  <div id='restaurants'>
+    <script id='restaurant-template' type='text/x-handlebars-template'>
+      <!-- one album -->
+      <div class="row">
+
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel panel-default">
+            <div class="panel-body">
+
+
+            <!-- begin album internal row -->
+              <div class='row'>
+                <div class="col-md-3 col-xs-12 thumbnail album-art">
+                  <img src="images/food.jpg" alt="album image">
+                </div>
+
+                <div class="col-md-9 col-xs-12">
+                  <ul class="restaurant list">
+                    <li class="restaurantlist-group-item">
+                      <h4 class='inline-header'>Restaurant Name:</h4>
+                      <span class='restaurant-name'>{{restName}}</span>
+                    </li>
+
+                    <li class="restaurantlist-group-item">
+                      <h4 class='inline-header'>Address:</h4>
+                      <span class='address'>{{address}}</span>
+                    </li>
+
+                    <li class="restaurantlist-group-item">
+                      <h4 class='inline-header'>Phone #:</h4>
+                      <span class='phone number'>{{phoneNum}}</span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <!-- end of album internal row -->
+
+              <div class='panel-footer'>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end one album -->
+    </script>
 </body>
 </html>

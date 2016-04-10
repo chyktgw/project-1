@@ -19,3 +19,10 @@ $(document).ready(function() {
     });
 
   });
+  function renderRestaurant(restaurant) {
+    console.log('rendering restaurant', restaurant);
+    var restaurantHtml = $('#restaurant-template').html();
+    var restaurantTemplate = Handlebars.compile(restaurantHtml);
+    var html = restaurantTemplate(restaurant);
+    $('#restaurants').prepend(html);
+  }

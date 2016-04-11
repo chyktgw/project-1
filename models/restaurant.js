@@ -5,7 +5,7 @@ var Reviews = require('./reviews');
 
 
 var RestaurantSchema = new Schema({
-  restName: String,
+  name: String,
   address: String,
   phoneNum: String,
   reviews: [Reviews.schema]

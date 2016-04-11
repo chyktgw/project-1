@@ -9,14 +9,14 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log("Params", req.params);
-  console.log("Body", req.body);
-  var newReview = new db.Review(req.body);
-  newReview.save(function (err, savedReview){
-    if (err) {
-      return console.log("Error ", err);
-    }
-    res.json(savedReview);
+  db.Restaurant.findById(req.params.albumId, function(err, foundRestaurant) {
+    console.log(req.body);
+    var newReview = new db.Review(req.body);
+    foundRestaurant.reviews.push(newReview);
+    foundRestaurant.save(function(err, savedRestaurant) {
+      console.log('newReview created: ', newReview);
+      res.json(newReview);
+    });
   });
 }
 

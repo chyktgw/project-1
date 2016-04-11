@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Food App</title>
-
-     <!-- STYLESHEETS -->
      <!-- STYLESHEETS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
      <link rel="stylesheet" href="/styles/styles.css">
@@ -15,7 +13,6 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-
 
 
   <!-- APPLICATION SCRIPTS -->
@@ -35,71 +32,115 @@
           Restaurant Lists <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-              <li><a href="#">Restaurant A</a></li>
-              <li><a href="#">Restaurant B</a></li>
-              <li><a href="#">Restaurant C</a></li>
-              <li><a href="#">Restaurant D</a></li>
-              <li><a href="#">Restaurant E</a></li>
+              <li><a href="57099526b016945415d1fb38">Restaurant A</a></li>
+              <li><a href="57099526b016945415d1fb32">Restaurant B</a></li>
+              <li><a href="57099526b016945415d1fb35">Restaurant C</a></li>
+              <li><a href="57099526b016945415d1fb38">Restaurant D</a></li>
             </ul>
           </div>
 </div>
 </div>
 </div>
-
-
-<section class="container">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h2>Restaurants</h2>
-    </div>
-  </div>
-  <!-- albums! -->
+<br>
+<br>
+  <!-- restaurant template -->
   <div id='restaurants'>
     <script id='restaurant-template' type='text/x-handlebars-template'>
-      <!-- one album -->
-      <div class="row">
+      <div class="restaurantRow">
 
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-6 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-body">
 
 
-            <!-- begin album internal row -->
-              <div class='row'>
-                <div class="col-md-3 col-xs-12 thumbnail album-art">
-                  <img src="images/food.jpg" alt="album image">
-                </div>
-
-                <div class="col-md-9 col-xs-12">
+            <!-- Lists of restaurants-->
+                <div class="col-md-6">
                   <ul class="restaurant list">
-                    <li class="restaurantlist-group-item">
+                    <li class="restaurantList-group-item">
                       <h4 class='inline-header'>Restaurant Name:</h4>
-                      <span class='restaurant-name'>{{restName}}</span>
+                      <div class='name'>{{name}}</div>
                     </li>
 
-                    <li class="restaurantlist-group-item">
+                    <li class="restaurantList-group-item">
                       <h4 class='inline-header'>Address:</h4>
-                      <span class='address'>{{address}}</span>
+                      <div class='address'>{{address}}</div>
                     </li>
 
-                    <li class="restaurantlist-group-item">
+                    <li class="restaurantList-group-item">
                       <h4 class='inline-header'>Phone #:</h4>
-                      <span class='phone number'>{{phoneNum}}</span>
+                      <div class='phoneNum'>{{phoneNum}}</div>
                     </li>
                   </ul>
+
+            <p><button class='btn btn-info edit-info'>Edit information</button>
+              <button class='btn btn-success save-info'>Save information</button> </p>
+
+
+                     <div class="modal-body">
+                  <div class="review">
+                <button type="button" class="btn btn-primary writeReview" data-toggle="modal" data-target="#review" data-review="@mdo">Write Review</button>
+                <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="review" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="review">Write Review</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label class="col-md-4 control-label" for="name">name</label>
+                            <div class="col-md-4">
+                              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label" for="date">Date</label>
+                            <div class="col-md-4">
+                              <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                            </div>
+                          </div>
+
+                          <!-- Text input-->
+                          <div class="form-group">
+                            <label class="col-md-4 control-label" for="Price">Price</label>
+                            <div class="col-md-4">
+                              <input id="price" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                            </div>
+                          </div>
+
+                          <!-- Text input-->
+                          <div class="form-group">
+                            <label class="col-md-4 control-label" for="text">Review</label>
+                            <div class="col-md-4">
+                              <input id="text" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary addReview">Add review</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 </div>
 
+                </div>
               </div>
-              <!-- end of album internal row -->
-
-              <div class='panel-footer'>
-              </div>
-
             </div>
           </div>
         </div>
       </div>
-      <!-- end one album -->
+
+
+
+      <!-- end of list-->
     </script>
+
 </body>
 </html>

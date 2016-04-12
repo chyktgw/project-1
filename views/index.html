@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Food App</title>
+    <title>FOODIE</title>
      <!-- STYLESHEETS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
      <link rel="stylesheet" href="/styles/styles.css">
@@ -33,10 +33,10 @@
           Restaurant Lists <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-              <li><a href="57099526b016945415d1fb38">Restaurant A</a></li>
-              <li><a href="57099526b016945415d1fb32">Restaurant B</a></li>
-              <li><a href="57099526b016945415d1fb35">Restaurant C</a></li>
-              <li><a href="57099526b016945415d1fb38">Restaurant D</a></li>
+              <li><a href="api/restaurant/57099526b016945415d1fb38">Hot Sauce and Panko</a></li>
+              <li><a href="api/restaurant/57099526b016945415d1fb32">farm:table</a></li>
+              <li><a href="api/restaurant/57099526b016945415d1fb35">The Soapbox Cafe</a></li>
+              <li><a href="api/restaurant/57099526b016945415d1fb38">Swan Oyster Depot</a></li>
             </ul>
           </div>
 </div>
@@ -47,7 +47,6 @@
   <!-- restaurant template -->
   <div id='restaurants'>
     <script id='restaurant-template' type='text/x-handlebars-template'>
-
       <div class="restaurantRow" id="{{_id}}">
         <div class="col-md-6 col-md-offset-1">
           <div class="panel panel-default">
@@ -72,11 +71,16 @@
                     </li>
                   </ul>
 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
             <p><button class='btn btn-info edit-info'>Edit information</button>
               <button class='btn btn-success save-info'>Save information</button> </p>
 
-
-                     <div class="modal-body">
+                 <!-- Write Review Modal -->
+                     <p><div class="modal-body">
                   <div class="review">
                 <button type="button" class="btn btn-primary writeReview" data-toggle="modal" data-target="#review" data-review="@mdo">Write Review</button>
                 <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="review" aria-hidden="true">
@@ -130,13 +134,7 @@
                   </div>
                 </div>
                 </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div></p>
 
 
 

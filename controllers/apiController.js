@@ -6,6 +6,13 @@ function index(req, res) {
     endpoints: [
       {method: "GET", path: "/api/", description: "List of restaurants"}
     ]
+    [
+      {method: "GET", path: "/api/restaraunt", description: "List of restaurants"}
+    ]
+    [
+    {method: "GET", path: "/api/rewviews", description: "reviews"}
+  ]
+
   });
 }
 

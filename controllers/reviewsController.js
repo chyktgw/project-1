@@ -9,7 +9,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  db.Restaurant.findById(req.params.albumId, function(err, foundRestaurant) {
+  db.Restaurant.findById(req.params.restaurantId, function(err, foundRestaurant) {
     console.log(req.body);
     var newReview = new db.Review(req.body);
     foundRestaurant.reviews.push(newReview);

@@ -1,22 +1,24 @@
 $(document).ready(function() {
-  console.log('sanity check!');
+  console.log('sanity check!!');
 
   $.get('/api/restaurant').success(function (restaurants) {
     restaurants.forEach(function(restaurants) {
       renderRestaurant(restaurants);
+      console.log('get rest.');
     });
   });
 
-//POST restaurant list
-    $('#restaurant-template').on('submit', function(e) {
-      e.preventDefault();
-      var formData = $(this).serialize();
-      $.post('/api/restaurant', formData, function(restaurant) {
-        console.log('restaurant after POST', restaurant);
-        renderRestaurant(restaurant);
-      });
-      $(this).trigger("reset");
-    });
+// //POST restaurant list
+//     $('#restaurant-template').on('submit', function(e) {
+//       e.preventDefault();
+//       var formData = $(this).serialize();
+//       $.post('/api/restaurant', formData, function(restaurant) {
+//         console.log('restaurant after POST', restaurant);
+//         renderRestaurant(restaurant);
+//       });
+//       $(this).trigger("reset");
+//     });
+
 
 // on click
 $('#restaurants').on('click', '.edit-info', handleResturantEdit);
@@ -24,6 +26,7 @@ $('#restaurants').on('click', '.save-info', handleSaveInfo);
 
 $('#saveReview').on('click', '.writeReview', handleWriteReview);
 $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
+console.log('on click');
 });
 
 
@@ -66,11 +69,16 @@ $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
   function reRenderRestaraunt(restaurantId) {
     $.get('/api/restaurant/' + restaurantId, function(data) {
       $('div[data-restaurant-id=' + restaurantId + ']').remove();
-      renderAlbum(data);
+      renderRestaurant(data);
     });
   }
 
-
+  $.ajax({
+    method: 'PUT',
+    url: '/api/restaurant/' + restaurantId,
+    data: data,
+    success: handleInfoUpdate
+  });
 
 //Save Rest. Info save-info button
   function handleSaveInfo(e) {
@@ -79,16 +87,11 @@ $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
 
     var data = {
       name: $restaurantRow.find('.edit-restaurant-name').val(),
-      adress: $reaturantRow.find('.edit-restaurant-address').val(),
+      adress: $restaurantRow.find('.edit-restaurant-address').val(),
       phoneNum: $restaurantRow.find('.edit-restaurant-phoneNum').val()
     };
     console.log('PUTing data for restaurant', restaurantId, 'with data', data);
-    $.ajax({
-      method: 'PUT',
-      url: '/api/restaurant/' + restaurantId,
-      data: data,
-      success: handleInfoUpdate
-    });
+
 
 
   }
@@ -110,7 +113,7 @@ function handleWriteReview(e) {
   console.log('id',currentRestaurantId);
   $('#review').data('restaurant-id', currentRestaurantId);
   $('#review').modal();
-    console.log('write-review clicked!');
+    console.log(handleWriteReview);
 }
 
 // when the review modal submit button is clicked:

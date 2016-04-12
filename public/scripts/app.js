@@ -40,6 +40,7 @@ $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
 //edit Rest. information edit-info button
   function handleResturantEdit(e) {
     var $restaurantRow = $(this).closest('.restaurant');
+    console.log($restaurantRow);
     var restaurantId = $restaurantRow.data('restaurant-id');
     console.log('edit rest', restaurantId);
 
@@ -61,12 +62,10 @@ $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
   }
 
 
-
+//Re-render restaurant info
   function reRenderRestaraunt(restaurantId) {
     $.get('/api/restaurant/' + restaurantId, function(data) {
-      // remove the current instance of the album from the page
       $('div[data-restaurant-id=' + restaurantId + ']').remove();
-      // re-render it with the new album data (including songs)
       renderAlbum(data);
     });
   }

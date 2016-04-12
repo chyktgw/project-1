@@ -20,7 +20,7 @@
 </head>
   <body>
     <div class="jumbotron">
-        <h1>Food App</h1>
+        <h1>FOODIE</h1>
         <p>Review your favorite restaurants<p>
       </div>
 <div class="container">
@@ -46,12 +46,11 @@
   <!-- restaurant template -->
   <div id='restaurants'>
     <script id='restaurant-template' type='text/x-handlebars-template'>
-      <div class="restaurantRow">
 
+      <div class="restaurantRow" id="{{_id}}">
         <div class="col-md-6 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-body">
-
 
             <!-- Lists of restaurants-->
                 <div class="col-md-6">
@@ -91,7 +90,7 @@
                       <div class="modal-body">
                         <form>
                           <div class="form-group">
-                            <label class="col-md-4 control-label" for="name">name</label>
+                            <label class="col-md-4 control-label" for="name">Name</label>
                             <div class="col-md-4">
                               <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
                             </div>
@@ -104,19 +103,17 @@
                             </div>
                           </div>
 
-                          <!-- Text input-->
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="Price">Price</label>
                             <div class="col-md-4">
-                              <input id="price" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                              <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="">
                             </div>
                           </div>
 
-                          <!-- Text input-->
                           <div class="form-group">
                             <label class="col-md-4 control-label" for="text">Review</label>
                             <div class="col-md-4">
-                              <input id="text" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                              <input id="text" name="text" type="text" placeholder="" class="form-control input-md" required="">
                             </div>
                           </div>
                         </form>

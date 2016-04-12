@@ -1,11 +1,10 @@
 .jumbotron {
   background-image: url(/images/food1.png);
   background-repeat: repeat;
-  color: #FFFFFF;
   height: 220px;
   font-size: 70px;
   text-align: center;
-  color: #FF0000;
+  color: #3366FF;
 }
 
 p{

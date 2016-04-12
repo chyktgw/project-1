@@ -8,16 +8,16 @@ $(document).ready(function() {
     });
   });
 
-// //POST restaurant list
-//     $('#restaurant-template').on('submit', function(e) {
-//       e.preventDefault();
-//       var formData = $(this).serialize();
-//       $.post('/api/restaurant', formData, function(restaurant) {
-//         console.log('restaurant after POST', restaurant);
-//         renderRestaurant(restaurant);
-//       });
-//       $(this).trigger("reset");
-//     });
+//POST restaurant list
+    $('#restaurant-template').on('submit', function(e) {
+      e.preventDefault();
+      var formData = $(this).serialize();
+      $.post('/api/restaurant', formData, function(restaurant) {
+        console.log('restaurant after POST', restaurant);
+        renderRestaurant(restaurant);
+      });
+      $(this).trigger("reset");
+    });
 
 
 // on click
@@ -186,10 +186,9 @@ function handleSaveChanges(e) {
   var $restrauntRow = $('[data-restaruant-id=' + restaurantId + ']');
 
   var data = {
-    name: $row.find('.edit-name').val(),
-    date: $row.find('.edit-date').val(),
-    price: $row.find('.edit-price').val(),
-    text: $row.find('.edit-text').val(),
+    name: $row.find('.name').val(),
+    address: $row.find('.address').val(),
+    phoneNum: $row.find('.phoneNum').val(),
   };
   console.log('PUTing data for restaurant', restaurantId, 'with data', data);
 

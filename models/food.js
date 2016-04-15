@@ -4,13 +4,13 @@ var Schema = mongoose.Schema;
 var Reviews = require('./reviews');
 
 
-var RestaurantSchema = new Schema({
+var FoodSchema = new Schema({
   name: String,
   address: String,
   phoneNum: String,
   reviews: [Reviews.schema]
 });
 
-var Restaurant = mongoose.model('Restaurant', RestaurantSchema);
+var Food = mongoose.model('Food', FoodSchema);
 
-module.exports = Restaurant;
+module.exports = Food;

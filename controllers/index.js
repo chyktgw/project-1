@@ -1,3 +1,3 @@
 module.exports.api= require('./apiController');
-module.exports.restaurant = require('./restaurantController');
+module.exports.food = require('./foodController');
 module.exports.reviews = require('./reviewsController');

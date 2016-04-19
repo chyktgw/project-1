@@ -1,43 +1,60 @@
 var db = require("./models");
 //var restaurantList = require('./models/restaurant.js');
 
-var restaurantList = [];
-restaurantList.push({
+//HARD CORD DATA
+var foodList = [{
   name: 'Hot Sauce and Panko',
   address: '1468 Hyde St',
   phoneNum: '415-555-1908',
-});
-restaurantList.push({
+  reviews: []
+},
+{
   name: 'farm:table',
   address: '754 Post St',
   phoneNum: '415-555-5555',
-});
-restaurantList.push({
+  reviews: []
+},
+{
   name: 'The Soapbox Cafe',
   address: '1800 Hyde St',
   phoneNum: '415-829-7139',
-});
-restaurantList.push({
+  reviews: []
+},
+{
   name: 'Swan Oyster',
   address: '1517 Polk St',
   phoneNum: '415-673-1101',
-});
+  reviews: []
+},
+{
+  name: 'El Mission',
+  address: '1754 University St',
+  phoneNum: '415-555-3780',
+  reviews: []
+}
+];
 
-db.Restaurant.create(restaurantList, function (err, restaurant){
-  if (err) {return console.log('error', err); }
-  console.log('all restaurants', restaurant);
-  process.exit();
-});
+var reviewsList = [{
+  name: "Rachel",
+  date: "3/31",
+  price: "$20",
+  text: "Good, but a little overpriced."
+  },
+  {
+  name: "TOm",
+  date: "4/1",
+  price: "$10",
+  text: "Cheap and great!"
+    }
+  ];
 
+db.Reviews.create(reviewsList, function(err, reviews){
+    if(err){console.log(err); return;}
+    console.log('created reviews');
+    console.log('created', reviews.length, "reviews");
 
-var reviews = [];
+ db.Reviews.remove({}, function(err, instructors){
+   console.log('reveiws removed');
 
-reviews.push({ review: 'This place is nice.',
-});
-reviews.push({ review: 'Great food.',
-});
-
-
-restaurantList.forEach(function(restaurant) {
-  restaurant.reviews = reviews;
+ });
 });

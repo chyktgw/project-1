@@ -19,6 +19,8 @@ function create(req, res) {
     });
   });
 }
+
+
 function destroy(req, res) {
   db.Restaurant.findById(req.params.restaurantId, function(err, foundRestaurant) {
     console.log(foundRestaurant);

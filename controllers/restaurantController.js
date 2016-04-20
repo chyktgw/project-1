@@ -21,26 +21,17 @@ function create(req, res) {
   });
 }
 
+
 //SHOW
 function show(req, res) {
-
+  db.Restaurant.findById(req.params.restaurantId, function(err, restaurant) {
+    if(err) { console.log('albumsController.show error', err); }
+    console.log('restaurant showing', restaurant);
+    res.json(restaurant);
+  });
 }
 
-// //UPDATE
-// function update(req, res) {
-//   console.log('updating with data', req.body);
-//   db.Restaurant.findById(req.params.restaurantId, function(err, Restaurant) {
-//     if(err) { console.log('restaurantController.update error', err); }
-//     Restaurant.name = req.body.name;
-//     Restaurant.address = req.body.address;
-//     Restaurant.phoneNum = req.body.phoneNum;
-//     Restaurant.save(function(err, savedRestaurant){
-//      if(err) { console.log ('saving failed'); }
-//      res.json(savedRestaurant);
-//    });
-//  });
-//
-// }
+
 
 // export public methods here
 module.exports = {

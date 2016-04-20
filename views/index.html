@@ -17,130 +17,171 @@
 
 
   <!-- APPLICATION SCRIPTS -->
-  <script src="scripts/app.js"></script>
+<script src="scripts/app.js"></script>
 </head>
-  <body>
-    <div class="jumbotron">
-        <h1>FOODIE</h1>
-        <p>Review your favorite restaurants<p>
-      </div>
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-      <!-- Single button -->
-      <!-- <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Restaurant Lists <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-              <li><a href="api/restaurant/57099526b016945415d1fb38">Hot Sauce and Panko</a></li>
-              <li><a href="api/restaurant/57099526b016945415d1fb32">farm:table</a></li>
-              <li><a href="api/restaurant/57099526b016945415d1fb35">The Soapbox Cafe</a></li>
-              <li><a href="api/restaurant/57099526b016945415d1fb38">Swan Oyster Depot</a></li>
-            </ul>
-          </div> -->
-</div>
-</div>
-</div>
-<br>
-<br>
+
+<body>
+  <div class="jumbotron">
+    <h1>FOODIE</h1>
+    <p>Review your favorite restaurants
+      <p>
+  </div>
+
+<!-- CREATE restaurant -->
+
+<section id='restaurantCreate' class="container">
+   <div class="row">
+   <div class="col-md-10 col-md-offset-1">
+
+     <form class="form-horizontal">
+       <fieldset>
+
+         <!-- Title -->
+         <legend>Create new restaurant</legend>
+
+         <!-- Rest. Info-->
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="name">Restaurant Name</label>
+           <div class="col-md-4">
+           <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+
+           </div>
+         </div>
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="address">Restaurant Address</label>
+           <div class="col-md-4">
+           <input id="address" name="address" type="text" placeholder="" class="form-control input-md">
+
+           </div>
+         </div>
+
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="releaseDate">Restaurant Phone Number</label>
+           <div class="col-md-4">
+           <input id="phoneNum" name="phoneNum" type="text" placeholder="" class="form-control input-md">
+
+           </div>
+         </div>
+
+         <!-- Button -->
+         <div class="form-group">
+           <div class="col-md-4">
+             <button id="create" name="create" class="btn btn-primary">Create</button>
+           </div>
+         </div>
+       </fieldset>
+     </form>
+   </div>
+   </div>
+ </section>
+
+
+
+
+
+
+
   <!-- restaurant template -->
-  <div id='foods'>
-    <script id='food-template' type='text/x-handlebars-template'>
-      <div class="restaurantRow" id="{{_id}}">
+  <div id='restaurants'>
+    <script id='restaurant-template' type='text/x-handlebars-template'>
+      <div class="restaurantRow" restaurantId="{{_id}}">
         <div class="col-md-6 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-body">
 
-            <!-- Lists of restaurants-->
-                <div class="col-md-6">
-                  <ul class="restaurant list">
-                    <li class="restaurantList-group-item">
-                      <h4 class='inline-header'>Restaurant Name:</h4>
-                      <div class='name'>{{name}}</div>
-                    </li>
+              <!-- Lists of restaurants-->
+              <div class="col-md-6">
+                <ul class="restaurant list">
+                  <li class="restaurantList-group-item">
+                    <h4 class='inline-header'>Restaurant Name:</h4>
+                    <div class='name'>{{name}}</div>
 
-                    <li class="restaurantList-group-item">
-                      <h4 class='inline-header'>Address:</h4>
-                      <div class='address'>{{address}}</div>
-                    </li>
+                  </li>
 
-                    <li class="restaurantList-group-item">
-                      <h4 class='inline-header'>Phone #:</h4>
-                      <div class='phoneNum'>{{phoneNum}}</div>
-                    </li>
-                  </ul>
+                  <li class="restaurantList-group-item">
+                    <h4 class='inline-header'>Address:</h4>
+                    <div class='address'>{{address}}</div>
+                  </li>
 
+                  <li class="restaurantList-group-item">
+                    <h4 class='inline-header'>Phone #:</h4>
+                    <div class='phoneNum'>{{phoneNum}}</div>
+                  </li>
+                </ul>
+
+                <p>
+                  <button class='btn btn-info' id='edit-info'>Edit information</button>
+                  <button class='btn btn-success' id='save-info'>Save information</button>
+                </p>
+                <div class='panel-footer'>
+                  <div class='panel-footer'>
+                <!-- Write Review Modal -->
+                    <p><div class="modal-body">
+                <button type="button" class="btn btn-primary writeReview" data-toggle="modal" data-target="#review" data-review="@mdo">Write Review</button>
+                <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="review" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                       <h4 class="modal-title" id="review">Write Review</h4>
+                     </div>
+                     <div class="modal-body">
+
+                <fieldset class='form-horizontal'>
+                       <form>
+                         <div class="form-group">
+                           <label class="col-md-4 control-label" for="name">Name</label>
+                           <div class="col-md-4">
+                             <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
+                           </div>
+                         </div>
+
+                         <div class="form-group">
+                           <label class="col-md-4 control-label" for="date">Date</label>
+                           <div class="col-md-4">
+                             <input id="date" name="date" type="text" placeholder="" class="form-control input-md">
+                           </div>
+                         </div>
+
+                         <div class="form-group">
+                           <label class="col-md-4 control-label" for="Price">Price</label>
+                           <div class="col-md-4">
+                             <input id="price" name="price" type="text" placeholder="" class="form-control input-md">
+                           </div>
+                         </div>
+
+                         <div class="form-group">
+                           <label class="col-md-4 control-label" for="text">Review</label>
+                           <div class="col-md-4">
+                             <input id="text" name="text" type="text" placeholder="" class="form-control input-md">
+                           </div>
+                         </div>
+                       </form>
+                     </fieldset>
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                       <button type="button" class="btn btn-primary" id="addReview">Add review</button>
+                     </div>
+                   </div>
+                 </div>
                 </div>
+                </div></p>
+              </div>
+            </div>
               </div>
             </div>
           </div>
         </div>
-        <br>
-            <p><button class='btn btn-info edit-info'>Edit information</button>
-              <button class='btn btn-success save-info'>Save information</button> </p>
-
-                 <!-- Write Review Modal -->
-                     <p><div class="modal-body">
-                  <div class="review">
-                <button type="button" class="btn btn-primary writeReview" data-toggle="modal" data-target="#review" data-review="@mdo">Write Review</button>
-                <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="review" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="review">Write Review</h4>
-                      </div>
-                      <div class="modal-body">
-
-            <fieldset class='form-horizontal'>
-                        <form>
-                          <div class="form-group">
-                            <label class="col-md-4 control-label" for="name">Name</label>
-                            <div class="col-md-4">
-                              <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label class="col-md-4 control-label" for="date">Date</label>
-                            <div class="col-md-4">
-                              <input id="date" name="date" type="text" placeholder="" class="form-control input-md">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label class="col-md-4 control-label" for="Price">Price</label>
-                            <div class="col-md-4">
-                              <input id="price" name="price" type="text" placeholder="" class="form-control input-md">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label class="col-md-4 control-label" for="text">Review</label>
-                            <div class="col-md-4">
-                              <input id="text" name="text" type="text" placeholder="" class="form-control input-md">
-                            </div>
-                          </div>
-                        </form>
-                      </fieldset>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary addReview">Add review</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </div>
-      </div></p>
-
-
-
-      <!-- end of list-->
+        <!-- end one album -->
     </script>
+</div>
+    </div>
+    </section>
+
+
 
 </body>
 </html>

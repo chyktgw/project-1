@@ -1,16 +1,17 @@
+
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var Reviews = require('./reviews');
 
 
-var FoodSchema = new Schema({
+var RestaurantSchema = new Schema({
   name: String,
   address: String,
   phoneNum: String,
   reviews: [Reviews.schema]
 });
 
-var Food = mongoose.model('Food', FoodSchema);
+var Restaurant = mongoose.model('Restaurant', RestaurantSchema);
 
-module.exports = Food;
+module.exports = Restaurant;

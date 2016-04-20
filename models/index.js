@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/food");
+mongoose.connect("mongodb://localhost/restaurant");
 
-var Food = require("./food");
+var Restaurant = require("./restaurant");
 
-module.exports.Food = Food;
+module.exports.Restaurant = Restaurant;
 module.exports.Reviews = require ("./reviews");

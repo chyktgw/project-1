@@ -1,30 +1,62 @@
 $(document).ready(function() {
   console.log('sanity check!!');
 
-// GET RESTAURANT
-  $.ajax({
-    method: "GET",
-    url: "/api/food",
-    success: onSuccess,
-    error: onError
+//GET restaurant Info
+$.get('/api/restaurant').success(function (restaurants) {
+  restaurants.forEach(function(restaurant) {
+    renderRestaurant(restaurant);
   });
+});
+});
 
-  function renderFood(food) {
-    var foodHtml = $('#food-template').html();
-    var foodTemplate = Handlebars.compile(foodHtml);
-    var html = foodTemplate({food : food});
-    $('#food').append(html);
-  }
+function renderRestaurant(restaurant) {
+  var source = $('#restaurant-template').html();
+  restaurantTemplate = Handlebars.compile(source);
+  var html = restaurantTemplate(restaurant);
+  $('#restaurants').prepend(html);
+  //console.log('render restaurant', restaurant);
+}
+
+
+$('#restaurantCreate').on('create', function(element) {
+  element.preventDefault();
+  var restData = $(this).serialize();
+  console.log('restData', restData);
+  $.post('/api/restaurant', restData, function(restaurant) {
+    console.log('restaurant POST', restaurant);
+    renderRestaurant(restaurant);  //render the server's response
+  });
+  $(this).trigger("reset");
 });
 
 
-//CREATE REVIEWS
 
-
-
-
-
-
+// //CREATE reviews
+//  $('#restaurants').on('click', '.write-review', handleWriteReview);
+//  function handleWriteReview(e) {
+//   console.log('WriteReview has been clicked!!');
+//   var restaurantId = $(this).closest('.restaurant').data('restaurantId');
+//   console.log('id',restaurantId);
+//   $('#review').data('restaurantId', restaurantId);
+//   $('#review').modal();  // display the modal
+// }
+//
+//
+// //POST review (Write review)
+// $('#addReview').on('click', '#addReview', writeReview);
+// console.log('clicked');
+// $.ajax({
+//   method: 'POST',
+//   url: '/api/restaurant/:restaurantId/reviews',
+//   data: reviews,
+//   success: writeReviewSuccess
+// });
+//
+// function writeReview(review) {
+// console.log("writing review", review);
+// $('#writeReview').modal('hide');
+// $('#review').append(newDonor);
+// }
 
 
 // //POST restaurant list
@@ -37,51 +69,45 @@ $(document).ready(function() {
 //       });
 //       $(this).trigger("reset");
 //     });
-//
+// //
 //
 // // on click
-// $('#restaurants').on('click', '.edit-info', handleResturantEdit);
-// $('#restaurants').on('click', '.save-info', handleSaveInfo);
-//
-// $('#saveReview').on('click', '.writeReview', handleWriteReview);
-// $('#addReview').on('click', '.addReview', handleNewReviewSubmit);
-// console.log('on click');
-// });
-//
-//
-//
-//   function renderRestaurant(restaurant) {
-//     var restaurantHtml = $('#restaurant-template').html();
-//     var restaurantTemplate = Handlebars.compile(restaurantHtml);
-//     var html = restaurantTemplate(restaurant);
-//     $('#restaurants').prepend(html);
-//     console.log('rendering rest. list');
-//   }
-//
+// $('#restaurants').on('click', '#edit-info', handleResturantEdit);
 //
 // //edit Rest. information edit-info button
 //   function handleResturantEdit(e) {
+//     console.log('clicked!');
 //     var $restaurantRow = $(this).closest('.restaurant');
 //     console.log($restaurantRow);
 //     var restaurantId = $restaurantRow.data('restaurant-id');
 //     console.log('edit rest', restaurantId);
 //
-//     // show the save changes button
-//     $restaurantRow.find('.save-info').toggleClass('hidden');
-//     // hide the edit button
-//     $restaurantRow.find('.edit-info').toggleClass('hidden');
-//
-//
 //     // edit rest. info (name, address, phone)
 //     var restaurantName = $restaurantRow.find('span.name').text();
-//     $restaurantRow.find('span.name').html('<input class="name" value="' + name + '"></input>');
+//     $restaurantRow.find('.name').html('<input class="name" value="' + name + '"></input>');
 //     // edit address
 //     var address = $restaurantRow.find('span.address').text();
-//     $restaurantRow.find('span.address').html('<input class="address" value="' + address + '"></input>');
+//     $restaurantRow.find('.address').html('<input class="address" value="' + address + '"></input>');
 //     // edit phone
 //     var phoneNum = $restaurantRow.find('span.phoneNum').text();
-//     $restaurantRow.find('span.phoneNum').html('<input class="phoneNum" value="' + phoneNum + '"></input>');
+//     $restaurantRow.find('.phoneNum').html('<input class="phoneNum" value="' + phoneNum + '"></input>');
 //   }
+
+
+
+
+// $('#restaurants').on('click', '.save-info', handleSaveInfo);
+//
+// $('#saveReview').on('click', '.writeReview', handleWriteReview);
+
+// console.log('on click');
+// });
+//
+//
+//
+//
+//
+
 //
 //
 // //Re-render restaurant info
@@ -91,13 +117,6 @@ $(document).ready(function() {
 //       renderRestaurant(data);
 //     });
 //   }
-//
-//   $.ajax({
-//     method: 'PUT',
-//     url: '/api/restaurant/' + restaurantId,
-//     data: data,
-//     success: handleInfoUpdate
-//   });
 //
 // //Save Rest. Info save-info button
 //   function handleSaveInfo(e) {
@@ -225,4 +244,4 @@ $(document).ready(function() {
 //   var restaurantId = data._id;
 //   $('[data-restaurant-id=' + RestaurantId + ']').remove();
 //   renderRestaurant(data);
-//}
+// }

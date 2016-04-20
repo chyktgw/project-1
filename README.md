@@ -1,5 +1,7 @@
 
 #FOODIE
+* A food review app for friends and family to share their favorite restaurants. 
+* https://sleepy-coast-40145.herokuapp.com/
 
 ##Technologies Used
 * HTML5

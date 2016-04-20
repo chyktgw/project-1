@@ -24,9 +24,9 @@ restaurantList.push({
   phoneNum: '415-673-1101',
 });
 
-restaurantList.forEach(function(restaurant) {
-  restaurant.reviews = reviews;
-});
+// restaurantList.forEach(function(restaurant) {
+//   restaurant.reviews = reviews;
+// });
 
 db.Restaurant.remove({}, function(err, restaurants){
 
@@ -38,9 +38,9 @@ db.Restaurant.create(restaurantList, function (err, restaurant){
 });
 });
 
-var reviews = [];
-
-reviews.push({ review: 'This place is nice.',
-});
-reviews.push({ review: 'Great food.',
-});
+// var reviews = [];
+//
+// reviews.push({ review: 'This place is nice.',
+// });
+// reviews.push({ review: 'Great food.',
+// });

@@ -25,18 +25,25 @@ function create(req, res) {
 //SHOW
 function show(req, res) {
   db.Restaurant.findById(req.params.restaurantId, function(err, restaurant) {
-    if(err) { console.log('albumsController.show error', err); }
+    if(err) { console.log('restaurantController.show error', err); }
     console.log('restaurant showing', restaurant);
     res.json(restaurant);
   });
 }
 
+//Delete
+function destroy(req, res) {
+  db.Restaurant.findOneAndRemove({ _id: req.params.restaurantId }, function(err, restaurant){
+    res.json(restaurantId);
+  });
+}
 
 
 // export public methods here
 module.exports = {
   index: index,
   show: show,
-  create: create
+  create: create,
+  delete: destroy
   //update: update
 };

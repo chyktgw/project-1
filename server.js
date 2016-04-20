@@ -27,8 +27,9 @@ app.get('/api', controllers.api.index);
 
 //Restaurants
 app.get('/api/restaurant', controllers.restaurant.index);
-app.post('/api/restaurant/:restaurantId', controllers.restaurant.create);
+app.post('/api/restaurant/', controllers.restaurant.create);
 app.get('/api/restaurant/:restaurantId', controllers.restaurant.show);
+app.delete('/api/restaurant/:restaurantId', controllers.restaurant.delete);
 //app.put('/api/restaurant/:restaurantId', controllers.restaurant.update);
 
 //Reviews

@@ -66,7 +66,7 @@
          <!-- Button -->
          <div class="form-group">
            <div class="col-md-4">
-             <button id="create" name="create" class="btn btn-primary">Create</button>
+             <button id="create" name="create" class="btn btn-primary" type="submit">Create</button>
            </div>
          </div>
        </fieldset>
@@ -84,7 +84,7 @@
   <!-- restaurant template -->
   <div id='restaurants'>
     <script id='restaurant-template' type='text/x-handlebars-template'>
-      <div class="restaurantRow" restaurantId="{{_id}}">
+      <div class="restaurantRow" data-restaurant-id="{{_id}}">
         <div class="col-md-6 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-body">
@@ -112,9 +112,13 @@
                 <p>
                   <button class='btn btn-info' id='edit-info'>Edit information</button>
                   <button class='btn btn-success' id='save-info'>Save information</button>
+                  <button class='btn btn-danger delete'>Delete Restaurant</button>
                 </p>
                 <div class='panel-footer'>
                   <div class='panel-footer'>
+
+
+
                 <!-- Write Review Modal -->
                     <p><div class="modal-body">
                 <button type="button" class="btn btn-primary writeReview" data-toggle="modal" data-target="#review" data-review="@mdo">Write Review</button>

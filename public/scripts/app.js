@@ -1,49 +1,63 @@
 $(document).ready(function() {
   console.log('sanity check!!');
 
-//GET restaurant Info
-$.get('/api/restaurant').success(function (restaurants) {
+//AJAX call to get hard coded data
+$.get('/api/restaurant/').success(function (restaurants) {
   restaurants.forEach(function(restaurant) {
     renderRestaurant(restaurant);
   });
 });
 
 
-//CREATE restaurants
+//Listens to create new restaurant
 $( "#create" ).on("click", function(element) {
 console.log('this works');
-  $( "#restaurantCreate" ).submit();
-  alert( "Handler for .subimt() called." );
+  $( "#restaurantCreate-form" ).submit();
   element.preventDefault();
-  var restData = $('#restaurantCreate').serialize();
-  console.log('restData', restData);
+  var formData = $(this).serialize();
+  console.log('serialize', formData);
 
-  $.ajax({
-    method: "POST",
-    url: "/api/restaurant/",
-    data: restData,
-    success: createSuccess,
-    error: createError
-  });
-function createError(error){
-  console.log('CREATE ERROR');
-}
-function createSuccess(data){
-  $.ajax({
-    method: "GET",
-    url: "/api/restaraunt/:restaurantId",
-    success: sanitySuccess,
-    error: sanityError
-  });
-}
-});
-function sanitySuccess(success) {
-  console.log(success , "this workkksss");
-  var restaurantSuccess = success;
-  restaurantSuccess.forEach( function(restaurant) {
+  $.post('/api/restaurant', formData, function(restaurant) {
+    console.log('POST', restaurant);
     renderRestaurant(restaurant);
-    });
-}
+  });
+  $(this).trigger("reset");
+ });
+
+});
+
+//ON CLICKS
+$('#restaurants').on('click', '.writeReview', function(evt) {
+  console.log("writeReview click");
+  //{{id}} from app.js
+  var currentRestaurantId = $(this).closest('.restaurant').data('restaurant-id');
+  //the write Review modal for specific rest.ID
+  $('#writeReview').data('restaurant-id', currentRestaurantId);
+  $('#writeReview').modal();  // this will display the modal
+});
+
+
+// function createError(error){
+//   console.log('CREATE ERROR');
+//
+// function createSuccess(restData){
+//   $.ajax({
+//     method: "GET",
+//     url: "/api/restaraunt/:id",
+//     success: sanitySuccess,
+//     error: sanityError
+//   });
+// }
+// });
+
+// function sanitySuccess(success) {
+//   console.log(success , "this workkksss");
+//   var restaurantSuccess = success;
+//   restaurantSuccess.forEach( function(restaurant) {
+//     renderRestaurant(restaurant);
+//     });
+// }
+
 //all rest.list prepend
   function renderRestaurant(restaurant){
   var source = $('#restaurant-template').html();
@@ -52,10 +66,10 @@ function sanitySuccess(success) {
   $('#restaurants').prepend(html);
   console.log('this works too');
 }
-function sanityError(error) {
-  console.log(error);
-
-}
+// function sanityError(error) {
+//   console.log(error);
+//
+// }
 // //EDIT Rest. INFO
 // $('#restaurants').on('#edit-info',editRestInfo);
 // //edit Rest. information edit-info button
@@ -80,26 +94,20 @@ function sanityError(error) {
 
 
 //DELETE RESTAURANT
-$( ".delete" ).on("click", function(element) {
-console.log('this works');
-  $( "#restaurant" ).submit();
-  function deleteRestaurant(e) {
-    var restaurantId = $(this).parents('.restaurant').data('restaurant-id');
-    console.log('someone wants to delete restaurant id=' + restaurantId );
-    $.ajax({
-      url: '/api/restaurant/' + restaurantId,
-      method: 'DELETE',
-      success: deleteSuccess
-    });
-  }
+function deleteRestaurant(event) {
+  var restaurantId = $(this).parents('.restaurant').data('restaurant-id');
+  console.log("delete rest.Id: ", restaurantId);
 
-//sucess callback
-  function deleteSuccess(data) {
-    var deleteRestaurantId = data._id;
-    console.log('remove restaurant', deleteRestaurantId);
-    //$('div[data-restaurant-id=' + deleteRestaurantId + ']').remove();
-    $('[data-restaurant-id=' + deleteRestaurantId + ' ]').remove();
-  }
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/restaurant/' + restaurantId,
+    success:  deleteSuccess
+  });
 
-});
-});
+  //call success function
+  function deleteSucess(data) {
+    var deletedRestaurantId = data._id;
+    console.log("removing restaurant:", deletedRestaurantId);
+    $('[data-restaurant-id=' + restaurantId + ']').remove();
+    }
+  }

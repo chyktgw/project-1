@@ -10,7 +10,6 @@ function index(req, res) {
   });
 }
 
-
 //CREATE
 function create(req, res) {
   console.log('body', req.body);
@@ -20,7 +19,6 @@ function create(req, res) {
     res.json(restaurant);
   });
 }
-
 
 //SHOW
 function show(req, res) {
@@ -34,7 +32,8 @@ function show(req, res) {
 //Delete
 function destroy(req, res) {
   db.Restaurant.findOneAndRemove({ _id: req.params.restaurantId }, function(err, restaurant){
-    res.json(restaurantId);
+    if(err) {console.log('destroy failed', err);}
+    res.json(foundRestaurant);
   });
 }
 

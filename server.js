@@ -28,14 +28,14 @@ app.get('/api', controllers.api.index);
 //Restaurants
 app.get('/api/restaurant', controllers.restaurant.index);
 app.post('/api/restaurant/', controllers.restaurant.create);
-app.get('/api/restaurant/:restaurantId', controllers.restaurant.show);
-app.delete('/api/restaurant/:restaurantId', controllers.restaurant.delete);
+app.get('/api/restaurant/:id', controllers.restaurant.show);
+app.delete('/api/restaurant/:id', controllers.restaurant.delete);
 //app.put('/api/restaurant/:restaurantId', controllers.restaurant.update);
 
 //Reviews
-app.get('/api/restaurant/:restaurantId/reviews', controllers.reviews.index);
-app.post('/api/restaurant/:restaurantId/reviews', controllers.reviews.create);
-app.delete('/api/restaurant/:restaurantId/reviews/:reviewId', controllers.reviews.destroy);
+app.get('/api/restaurant/:id/reviews', controllers.reviews.index);
+app.post('/api/restaurant/:id/reviews', controllers.reviews.create);
+app.delete('/api/restaurant/:id/reviews/:id', controllers.reviews.destroy);
 
 
 

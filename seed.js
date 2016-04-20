@@ -32,7 +32,8 @@ db.Restaurant.remove({}, function(err, restaurants){
 
 db.Restaurant.create(restaurantList, function (err, restaurant){
   if (err) {return console.log('error', err); }
-  console.log('all restaurants', restaurant);
+  console.log("restaurants:", restaurant);
+  console.log("created", restaurants.length, "restaurants");
   process.exit();
 });
 });

@@ -40,18 +40,22 @@ function createSuccess(data){
 function sanitySuccess(success) {
   console.log(success , "this workkksss");
   var restaurantSuccess = success;
-  restaurantSuccess.forEach( function(oneRestaurant) {
-    renderRestaurant(oneRestaurant);
+  restaurantSuccess.forEach( function(restaurant) {
+    renderRestaurant(restaurant);
     });
-
-  function renderRestaurant(oneRestaurant){
+}
+//all rest.list prepend
+  function renderRestaurant(restaurant){
   var source = $('#restaurant-template').html();
   restaurantTemplate = Handlebars.compile(source);
   var html = restaurantTemplate(restaurant);
   $('#restaurants').prepend(html);
+  console.log('this works too');
 }
-}
+function sanityError(error) {
+  console.log(error);
 
+}
 // //EDIT Rest. INFO
 // $('#restaurants').on('#edit-info',editRestInfo);
 // //edit Rest. information edit-info button
@@ -76,8 +80,9 @@ function sanitySuccess(success) {
 
 
 //DELETE RESTAURANT
-  $('#restaurants').on('click', '.delete', deleteRestaurant);
-
+$( ".delete" ).on("click", function(element) {
+console.log('this works');
+  $( "#restaurant" ).submit();
   function deleteRestaurant(e) {
     var restaurantId = $(this).parents('.restaurant').data('restaurant-id');
     console.log('someone wants to delete restaurant id=' + restaurantId );
@@ -96,4 +101,5 @@ function sanitySuccess(success) {
     $('[data-restaurant-id=' + deleteRestaurantId + ' ]').remove();
   }
 
+});
 });

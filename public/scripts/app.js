@@ -8,25 +8,23 @@ $.get('/api/restaurant/').success(function (restaurants) {
   });
 });
 
-
 //Listens to create new restaurant
-$( "#create" ).on("click", function(element) {
+$( "#restaurantCreate-form" ).on('create', function(element) {
 console.log('this works');
-  $( "#restaurantCreate-form" ).submit();
   element.preventDefault();
   var formData = $(this).serialize();
-  console.log('serialize', formData);
+  console.log(formData);
 
   $.post('/api/restaurant', formData, function(restaurant) {
     console.log('POST', restaurant);
     renderRestaurant(restaurant);
   });
   $(this).trigger("reset");
- });
-
 });
 
-//ON CLICKS
+
+
+////////////ON CLICKS////////////
 $('#restaurants').on('click', '.writeReview', function(evt) {
   console.log("writeReview click");
   //{{id}} from app.js
@@ -35,6 +33,44 @@ $('#restaurants').on('click', '.writeReview', function(evt) {
   $('#writeReview').data('restaurant-id', currentRestaurantId);
   $('#writeReview').modal();  // this will display the modal
 });
+
+//DELETE
+$('#restaurants').on('click', '.delete', deleteRestaurant);
+
+
+});
+
+//Render Functions. Long and complicated... Read Comments!!
+//all rest.list prepend
+  function renderRestaurant(restaurant){
+  var source = $('#restaurant-template').html();
+  restaurantTemplate = Handlebars.compile(source);
+  var html = restaurantTemplate(restaurant);
+  $('#restaurants').prepend(html);
+  console.log('this works too');
+}
+
+
+//DELETE RESTAURANT
+function deleteRestaurant(event) {
+  var restaurantId = $(this).parents('.restaurant').data('restaurant-id');
+  console.log("delete rest.Id: ", restaurantId);
+
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/restaurant/' + restaurantId,
+    success:  deleteSuccess
+  });
+
+  //call success function
+  function deleteSuccess(data) {
+    var deletedRestaurantId = data._id;
+    console.log("removing restaurant:", deletedRestaurantId);
+    $('[data-restaurant-id=' + restaurantId + ']').remove();
+    }
+  }
+
+
 
 
 // function createError(error){
@@ -58,14 +94,7 @@ $('#restaurants').on('click', '.writeReview', function(evt) {
 //     });
 // }
 
-//all rest.list prepend
-  function renderRestaurant(restaurant){
-  var source = $('#restaurant-template').html();
-  restaurantTemplate = Handlebars.compile(source);
-  var html = restaurantTemplate(restaurant);
-  $('#restaurants').prepend(html);
-  console.log('this works too');
-}
+
 // function sanityError(error) {
 //   console.log(error);
 //
@@ -90,24 +119,3 @@ $('#restaurants').on('click', '.writeReview', function(evt) {
 //     var phoneNum = $restaurantRow.find('.phoneNum').text();
 //     $restaurantRow.find('.phoneNum').html('<input class="phoneNum" value="' + phoneNum + '"></input>');
 //   }
-
-
-
-//DELETE RESTAURANT
-function deleteRestaurant(event) {
-  var restaurantId = $(this).parents('.restaurant').data('restaurant-id');
-  console.log("delete rest.Id: ", restaurantId);
-
-  $.ajax({
-    method: 'DELETE',
-    url: '/api/restaurant/' + restaurantId,
-    success:  deleteSuccess
-  });
-
-  //call success function
-  function deleteSucess(data) {
-    var deletedRestaurantId = data._id;
-    console.log("removing restaurant:", deletedRestaurantId);
-    $('[data-restaurant-id=' + restaurantId + ']').remove();
-    }
-  }

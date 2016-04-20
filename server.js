@@ -27,16 +27,14 @@ app.get('/api', controllers.api.index);
 
 //Restaurants
 app.get('/api/restaurant', controllers.restaurant.index);
+//POST
 app.post('/api/restaurant/', controllers.restaurant.create);
-app.get('/api/restaurant/:id', controllers.restaurant.show);
-app.delete('/api/restaurant/:id', controllers.restaurant.delete);
+//POST for write review for restaurant (create)
+app.get('/api/restaurant/:restaurantId', controllers.restaurant.create);
+//DELETE restaurant
+app.delete('/api/restaurant/:restaurantId', controllers.restaurant.delete);
+//PUT restaurant ID when update
 //app.put('/api/restaurant/:restaurantId', controllers.restaurant.update);
-
-//Reviews
-app.get('/api/restaurant/:id/reviews', controllers.reviews.index);
-app.post('/api/restaurant/:id/reviews', controllers.reviews.create);
-app.delete('/api/restaurant/:id/reviews/:id', controllers.reviews.destroy);
-
 
 
 app.listen(process.env.PORT || 3000, function () {

@@ -31,7 +31,7 @@ function show(req, res) {
 
 //Delete
 function destroy(req, res) {
-  db.Restaurant.findOneAndRemove({ _id: req.params.restaurantId }, function(err, restaurant){
+  db.Restaurant.findOneAndRemove({ _id: req.params.restaurantId }, function(err, foundRestaurant){
     if(err) {console.log('destroy failed', err);}
     res.json(foundRestaurant);
   });

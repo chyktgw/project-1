@@ -2,10 +2,7 @@
 
 //require express in our app
 var express = require('express');
-var Restaurant = require('./models/restaurant.js');
-var Reveiws = require('./models/reviews.js');
 var app = express();
-var db = require('./models');
 var bodyParser = require('body-parser');
 
 // serve static files from public folder
@@ -30,11 +27,11 @@ app.get('/api/restaurant', controllers.restaurant.index);
 //POST
 app.post('/api/restaurant/', controllers.restaurant.create);
 //POST for write review for restaurant (create)
-app.get('/api/restaurant/:restaurantId', controllers.restaurant.create);
+app.get('/api/restaurant/:id', controllers.restaurant.create);
 //DELETE restaurant
-app.delete('/api/restaurant/:restaurantId', controllers.restaurant.delete);
+app.delete('/api/restaurant/:id', controllers.restaurant.delete);
 //PUT restaurant ID when update
-//app.put('/api/restaurant/:restaurantId', controllers.restaurant.update);
+//app.put('/api/restaurant/:id', controllers.restaurant.update);
 
 
 app.listen(process.env.PORT || 3000, function () {

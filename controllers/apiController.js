@@ -5,18 +5,18 @@ function index(req, res) {
     base_url: "WIP",
     endpoints: [
       {method: "GET", path: "/api/", description: "Endpoints"},
-      //list of restaurants
-      {method: "GET", path: "/api/restaurant", description: "list of restaurants"},
-      //GET one specific Restaurant info to edit
-      {method: "GET", path: "/api/restaurant/:id", description: "show one specific"},
-      //CREATE restaurant
-      {method: "POST", path: "/api/restaurant/", description: "show one specific"},
-      //PUT update restaurant info
-      {method: "PUT", path: "/api/restaurant/:id", description: "update restaurant info"},
-      //CREATE review
-      {method: "POST", path: "/api/restaurant/:id/reviews", description: "post review"},
-      //DELETE review
-      {method: "DELETE", path: "/api/reviews/:id", description: "delete reviews"}
+      // //list of restaurants
+      // {method: "GET", path: "/api/restaurant", description: "list of restaurants"},
+      // //GET one specific Restaurant info to edit
+      // {method: "GET", path: "/api/restaurant/:id", description: "show one specific"},
+      // //CREATE restaurant
+      // {method: "POST", path: "/api/restaurant/", description: "show one specific"},
+      // //PUT update restaurant info
+      // {method: "PUT", path: "/api/restaurant/:id", description: "update restaurant info"},
+      // //CREATE review
+      // {method: "POST", path: "/api/restaurant/:id/reviews", description: "post review"},
+      // //DELETE review
+      // {method: "DELETE", path: "/api/reviews/:id", description: "delete reviews"}
     ]
   });
 }
